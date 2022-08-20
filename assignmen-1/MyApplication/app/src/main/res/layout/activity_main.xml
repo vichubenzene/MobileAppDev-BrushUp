@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Lblue"
+    tools:context=".MainActivity2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/Lwhite"
+        tools:context=".MainActivity"
+        android:layout_centerVertical="true"
+        >
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/edit_background"
+            android:text="Name"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et1"
+            android:layout_width="170dp"
+            android:layout_height="30dp"
+            android:layout_margin="20dp"
+            android:layout_toRightOf="@+id/tv1"
+            android:background="@drawable/edit_background"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tv1"
+            android:layout_margin="20dp"
+            android:background="@drawable/edit_background"
+            android:text="Roll no"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/et2"
+            android:layout_width="170dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/et1"
+            android:layout_margin="20dp"
+            android:layout_toRightOf="@id/tv2"
+            android:background="@drawable/edit_background"
+            android:padding="5dp" />
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/tv2"
+            android:layout_margin="20dp"
+            android:background="@drawable/edit_background"
+            android:gravity="center"
+            android:text="Branch"
+            android:textSize="20dp" />
+
+        <RadioGroup
+            android:id="@+id/rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et2"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@+id/tv3"
+            android:buttonTint="@color/Lorange">
+
+            <RadioButton
+                android:id="@+id/r1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/Lorange"
+                android:text="ECE"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/r2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/Lorange"
+                android:text="CSE"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/r3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/Lorange"
+                android:text="CCE"
+                android:textSize="20dp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv4"
+            android:layout_width="150dp"
+            android:layout_height="180dp"
+            android:layout_below="@id/rg"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/edit_background"
+            android:gravity="center"
+            android:text="Year"
+            android:textSize="20dp" />
+
+        <CheckBox
+            android:id="@+id/c1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rg"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/tv4"
+            android:buttonTint="@color/Lorange"
+            android:text="1st Year"
+            android:textSize="20dp" />
+
+        <CheckBox
+            android:id="@+id/c2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/c1"
+            android:layout_toRightOf="@id/tv4"
+            android:buttonTint="@color/Lorange"
+            android:text="2nd Year"
+            android:textSize="20dp" />
+
+        <CheckBox
+            android:id="@+id/c3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/c2"
+            android:layout_toRightOf="@id/tv4"
+            android:buttonTint="@color/Lorange"
+            android:text="3rd Year"
+            android:textSize="20dp" />
+
+        <CheckBox
+            android:id="@+id/c4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/c3"
+            android:layout_toRightOf="@id/tv4"
+            android:buttonTint="@color/Lorange"
+            android:text="4th Year"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/bton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/c4"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/Lorange"
+            android:text="Submit"
+            android:textSize="20dp" />
+
+    </RelativeLayout></RelativeLayout>
