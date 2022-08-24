@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/A"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="A"
+
+        />
+    <Button
+        android:id="@+id/B"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="B"
+        android:layout_toRightOf="@+id/A"
+        />
+    <Button
+        android:id="@+id/C"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="C"
+        android:layout_below="@+id/B"
+        android:layout_toRightOf="@+id/A"
+        />
+    <Button
+        android:id="@+id/D"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:text="D"
+        android:layout_below="@+id/A"
+        />
+    <Button
+        android:id="@+id/E"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="E"
+        android:layout_below="@+id/D"
+        />
+    <Button
+        android:id="@+id/F"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="F"
+        android:layout_below="@+id/D"
+        android:layout_toRightOf="@+id/E"
+        />
+    <Button
+        android:id="@+id/G"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="G"
+        android:layout_below="@+id/F"
+        android:layout_toRightOf="@+id/E"
+        />
+    <Button
+        android:id="@+id/H"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="H"
+        android:layout_below="@+id/F"
+        android:layout_toRightOf="@+id/G"
+        />
+
+
+</RelativeLayout>
