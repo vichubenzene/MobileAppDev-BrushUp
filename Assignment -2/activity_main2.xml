@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bluegradient"
+    tools:context=".MainActivity2">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@android:dimen/app_icon_size"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="40dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/cretypearticoblack"
+            android:text="MOMENTUM"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="GROWTH • HAPPENS • TODAY"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIGN IN"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="80dp"
+            android:id="@+id/in1"
+            android:textSize="18dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/white"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="40dp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textSize="25dp"
+            android:text="SIGN UP"
+
+            android:id="@+id/up1"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:drawablePadding="8dp"
+            android:drawableLeft="@drawable/ic_baseline_mail_outline_24"
+            android:layout_below="@+id/bton11"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:id="@+id/et1"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/et1"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:textColor="@color/white"
+            android:drawablePadding="8dp"
+            android:backgroundTint="@color/white"
+            android:id="@+id/et2"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign up"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#4C6983"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+    </LinearLayout>
