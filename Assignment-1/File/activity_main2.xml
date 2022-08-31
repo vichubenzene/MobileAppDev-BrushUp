@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Lblue"
+    tools:context=".MainActivity2"
+    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/Lwhite"
+    tools:context=".MainActivity2"
+    android:layout_margin="20dp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="@color/Lorange"
+        android:text="Name   :"
+        android:layout_margin="20dp"
+        android:id="@+id/t1"/>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/t1"
+        android:textSize="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Lorange"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/tv1"
+        android:text="Roll No :"
+        android:id="@+id/t2"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/tv2"
+        android:layout_toRightOf="@id/t2"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/tv1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Lorange"
+        android:textSize="20dp"
+        android:text="Branch :"
+
+        android:layout_below="@id/tv2"
+        android:layout_margin="20dp"
+        android:id="@+id/t3"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/tv3"
+        android:layout_toRightOf="@id/t3"
+        android:layout_margin="20dp"
+        android:layout_below="@+id/tv2"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Lorange"
+        android:textSize="20dp"
+        android:text="Year      :"
+        android:layout_below="@id/t3"
+        android:layout_margin="20dp"
+        android:id="@+id/t4"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/tv4"
+        android:layout_toRightOf="@id/t4"
+        android:layout_margin="20dp"
+        android:layout_below="@id/tv3"/>
+
+</RelativeLayout>
+    </RelativeLayout>
