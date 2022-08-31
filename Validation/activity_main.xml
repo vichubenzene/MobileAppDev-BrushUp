@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_margin="20dp"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:text="Name: "
+        android:id="@+id/txt1"
+        />
+
+    <EditText
+        android:id="@+id/edt1"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@+id/txt1"
+        android:backgroundTint="@color/black"
+        android:hint="Name" />
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_margin="20dp"
+        android:text="Date:"
+        android:layout_below="@+id/txt1"
+        android:id="@+id/text2"
+        />
+
+    <EditText
+        android:id="@+id/edt2"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/edt1"
+        android:layout_toRightOf="@+id/txt1"
+        android:hint="enter roll no"
+        android:inputType="date" />
+
+    <TextView
+        android:layout_margin="20dp"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:text="sem "
+        android:id="@+id/txt3"
+        android:layout_below="@+id/text2"
+        />
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:hint="Enter sem"
+        android:layout_marginTop="10dp"
+        android:id="@+id/edt3"
+        android:layout_below="@id/edt2"
+        android:layout_toRightOf="@+id/txt3"
+        android:inputType="number"
+        />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edt3"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="50dp"
+        android:id="@+id/ug"
+        >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B.Tech"
+            android:layout_marginRight="20dp"
+            android:id="@+id/btech"
+            />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M.tech"
+            android:id="@+id/mtech"
+
+            />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ug"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/txt3"
+        android:layout_marginLeft="40dp"
+        android:text="Submit"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Choice:"
+        android:layout_below="@id/submit"
+        android:layout_toRightOf="@+id/txt3"
+        android:id="@+id/choice"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/choice"
+        android:layout_margin="20dp"
+        android:id="@+id/newLayot"
+        android:orientation="vertical"
+    >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Click Me"
+            android:id="@+id/dynamic"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
