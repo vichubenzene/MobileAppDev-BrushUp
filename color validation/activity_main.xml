@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="#33ff55"
+    tools:ignore="SpeakableTextPresentCheck">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:background="#aaaaff"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Name: "
+                        android:layout_margin="5dp"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:id="@+id/name"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:textSize="24sp"
+                        android:layout_margin="5dp"
+                        android:background="#ffffff"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Reg No:"
+                        android:layout_margin="5dp"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:id="@+id/rno"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:textSize="24sp"
+                        android:layout_margin="5dp"
+                        android:background="#ffffff"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="DOB: "
+                        android:layout_margin="5dp"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:id="@+id/dob"
+                        android:textSize="24sp"
+                        android:inputType="date"
+                        android:layout_margin="5dp"
+                        android:background="#ffffff"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Semester: "
+                        android:layout_margin="5dp"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sem"
+                        android:layout_weight="1"
+                        android:textSize="24sp"
+                        android:inputType="number"
+                        android:layout_margin="5dp"
+                        android:background="#ffffff"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#ffaaaa"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Study: "
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        />
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:id="@+id/rg"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="MTech"
+                            android:id="@+id/mtech"
+                            android:textSize="24sp"
+                            android:onClick="course_mtech"
+                            android:textStyle="bold"
+                            />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Btech"
+                            android:id="@+id/btech"
+                            android:onClick="course_btech"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            />
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#dd3366"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Course: "
+                        android:layout_gravity="center_vertical"
+                        android:layout_margin="5dp"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AI"
+                            android:id="@+id/ai"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:buttonTint="#000000"
+                            />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Image Processing"
+                            android:id="@+id/ip"
+                            android:buttonTint="#000000"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Security"
+                            android:id="@+id/sec"
+                            android:buttonTint="#000000"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Submit"
+                android:textSize="24dp"
+                android:id="@+id/submit"
+                android:layout_height="50dp"/>
+            <Button
+                android:layout_width="200dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_horizontal"
+                android:text="Clear"
+                android:id="@+id/clear"
+                android:textSize="24dp"
+                android:layout_height="50dp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
