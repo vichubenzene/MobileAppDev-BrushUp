@@ -1,0 +1,191 @@
+Xml - MainActivity
+---------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.example.fragcom.frag1"
+        android:id="@+id/f1"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chakra"/>
+
+    </LinearLayout>
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.example.fragcom.frag2"
+        android:id="@+id/f2"
+        android:layout_weight="1"/>
+
+
+</LinearLayout>
+
+Xml-Frag1
+--------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF5733"
+    tools:context=".frag1">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Increase"
+        android:layout_gravity="center"
+        android:backgroundTint="#FF5733"
+        android:id="@+id/bton"/>
+
+</FrameLayout>
+
+Xml - Frag2
+-------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#006400"
+    tools:context=".frag2">
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tv"
+       android:text="Counter"
+       android:layout_gravity="center"
+       android:textColor="@color/white"
+       android:textSize="20dp"/>
+
+</FrameLayout>
+
+Java - MainActivity
+--------------------------------
+
+package com.example.fragcom;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity implements Communicator {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public void respond(String i) {
+        FragmentManager fm=getSupportFragmentManager();
+        frag2 f2 = (frag2) fm.findFragmentById(R.id.f2);
+        f2.changedata(i);
+
+    }
+}
+
+Java-Frag1
+---------------------------------
+
+package com.example.fragcom;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
+
+public class frag1 extends Fragment implements View.OnClickListener {
+    Button button;
+    Communicator comm;
+    int count =0;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view =  inflater.inflate(R.layout.fragment_frag1, container, false);
+        button = view.findViewById(R.id.bton);
+
+        button.setOnClickListener(this);
+        return view;
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        count = count+1;
+        if(comm==null){
+            comm=(Communicator)getActivity();
+        }
+        comm.respond("COUNT: "+count);
+
+    }
+}
+
+Java - Frag2
+-----------------------------------
+
+package com.example.fragcom;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class frag2 extends Fragment {
+
+    public void changedata(String i){
+        TextView txt = getActivity().findViewById(R.id.tv);
+        txt.setText(i);
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_frag2, container, false);
+
+        return view;
+    }
+}
+
+
+Communicator.java
+------------------------
+
+package com.example.fragcom;
+
+public interface Communicator {
+    public void respond(String i);
+}

@@ -1,0 +1,155 @@
+Xml - MainActivity
+---------------------------
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lay1"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+Xml - Menu
+---------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/item1"
+        android:icon="@drawable/ic_baseline_bluetooth_24"
+        android:title="item1"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/item2"
+        android:icon="@drawable/ic_baseline_bluetooth_24"
+        android:title="item2"
+        app:showAsAction="never"/>
+    <item android:id="@+id/item3"
+        android:icon="@drawable/ic_baseline_bluetooth_24"
+        android:title="item3"
+        app:showAsAction="never">
+        <menu>
+            <item android:id="@+id/subitem1"
+                android:title="subitem1"/>
+            <item android:id="@+id/subitem2"
+                android:title="subitem2"/>
+            <item android:id="@+id/subitem3"
+                android:title="subitem3"/>
+        </menu>
+    </item>
+
+</menu>
+
+
+Java - MainActivity
+---------------------------------
+
+package com.example.menu;
+
+import static com.example.menu.R.menu.example_menu;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
+
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    ConstraintLayout lay;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        lay = findViewById(R.id.lay1);
+        registerForContextMenu(lay);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.example_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.item1:
+                Toast.makeText(this,"Item1",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.item2:
+                Toast.makeText(this,"Item2",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.item3:
+                Toast.makeText(this,"Item3",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.subitem1:
+                Toast.makeText(this,"SubItem1",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.subitem2:
+                Toast.makeText(this,"SubItem2",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.subitem3:
+                Toast.makeText(this,"SubItem3",Toast.LENGTH_LONG).show();
+                break;
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.item1:
+                Toast.makeText(this,"Item1",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.item2:
+                Toast.makeText(this,"Item2",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.item3:
+                Toast.makeText(this,"Item3",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.subitem1:
+                Toast.makeText(this,"SubItem1",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.subitem2:
+                Toast.makeText(this,"SubItem2",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.subitem3:
+                Toast.makeText(this,"SubItem3",Toast.LENGTH_LONG).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(example_menu,menu);
+    }
+}

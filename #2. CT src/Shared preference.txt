@@ -1,0 +1,150 @@
+Xml - Activity1
+-------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAAFBA"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Username"
+        android:layout_margin="15dp"
+        android:background="@drawable/back"
+        android:paddingLeft="10dp"
+        android:id="@+id/et1"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:hint="Password"
+        android:background="@drawable/back"
+        android:paddingLeft="10dp"
+        android:id="@+id/et2"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Next"
+        android:id="@+id/bton"/>
+
+</LinearLayout>
+
+Xml - Activity2
+------------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity2">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/tv1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:id="@+id/tv2"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/bton2"
+        android:text="click"/>
+
+
+</LinearLayout>
+
+Java - Activity1
+------------------------
+
+package com.example.shared_preference;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+    Button button;
+    EditText username,password;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button = findViewById(R.id.bton);
+        username = findViewById(R.id.et1);
+        password = findViewById(R.id.et2);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sf = getSharedPreferences("myfile", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = sf.edit();
+                edit.putString("Username",username.getText().toString());
+                edit.putString("Password",password.getText().toString());
+                edit.commit();
+                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
+
+
+Java-Activity2
+------------------------
+
+package com.example.shared_preference;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity2 extends AppCompatActivity {
+    TextView txt1,txt2;
+    Button bton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        txt1 = findViewById(R.id.tv1);
+        txt2 = findViewById(R.id.tv2);
+        bton = findViewById(R.id.bton2);
+        bton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sf = getSharedPreferences("myfile", Context.MODE_PRIVATE);
+                String p = sf.getString("Username","NA");
+                String q = sf.getString("password","NA");
+                txt1.setText(p);
+                txt2.setText(q);
+            }
+        });
+    }
+}

@@ -1,0 +1,75 @@
+Xml - Activity main
+----------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lv"/>
+
+</LinearLayout>
+
+
+Java - MainActivity
+---------------------------
+
+package com.example.listview;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+    ListView l;
+    String months[]={"Jan","Feb","Mar","Apr","May","June","Jan","Feb","Mar","Apr","May","June","Jan","Feb","Mar","Apr","May","June",
+            "Jan","Feb","Mar","Apr","May","June"};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        l=findViewById(R.id.lv);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.reso,R.id.week,months);
+        l.setAdapter(adapter);
+        l.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        TextView txt = (TextView) view;
+        Toast.makeText(this,txt.getText().toString(),Toast.LENGTH_LONG).show();
+    }
+}
+
+
+Xml-Reso
+-------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/purple_700"
+        android:id="@+id/week"/>
+
+</LinearLayout>
