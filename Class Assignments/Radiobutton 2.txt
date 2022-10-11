@@ -1,0 +1,151 @@
+Changing color of the background by pressing the radio button
+--------------------------------------------------------------
+
+Xml file
+-----------
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/t1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:textColor="@color/purple_700"
+        android:text="SELECT A COLOR"
+        android:textSize="25dp"/>
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/t1"
+        android:layout_centerHorizontal="true">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red"
+            android:textSize="20dp"
+            android:id="@+id/r1"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/r2"
+            android:text="Blue"
+            android:textSize="20dp"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green"
+            android:textSize="20dp"
+            android:id="@+id/r3"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yellow"
+            android:textSize="20dp"
+            android:id="@+id/r4"/>
+    </RadioGroup>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="XXXX"
+        android:layout_below="@+id/rg"
+        android:id="@+id/t2"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"/>
+
+
+
+
+
+</RelativeLayout>
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+Java file:
+-------------
+
+package com.example.myapplication;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity{
+    TextView txt1;
+    RadioGroup rgb;
+    RadioButton red,blue,green,yellow;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        red = findViewById(R.id.r1);
+        blue = findViewById(R.id.r2);
+        green = findViewById(R.id.r3);
+        yellow = findViewById(R.id.r4);
+        rgb = findViewById(R.id.rg);
+        txt1 = findViewById(R.id.t2);
+        rgb.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.r1:
+                        txt1.setBackgroundColor(getResources().getColor(R.color.red));
+                        break;
+                    case R.id.r2:
+                        txt1.setBackgroundColor(getResources().getColor(R.color.blue));
+                        break;
+                    case R.id.r3:
+                        txt1.setBackgroundColor(getResources().getColor(R.color.green));
+                        break;
+                    case R.id.r4:
+                        txt1.setBackgroundColor(getResources().getColor(R.color.yellow));
+                        break;
+                }
+
+            }
+        });
+    }
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+Colors.xml
+-----------
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FFFF0000</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="green">#FF00FF00</color>
+    <color name="yellow">#FFFFFF00</color>
+</resources>

@@ -1,0 +1,70 @@
+Incrementing Textview on pressing button:
+-----------------------------------------------------
+
+Xml File:
+-------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_gravity="center"
+        android:id="@+id/txt1"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click Me"
+        android:id="@+id/bton1"
+        android:layout_gravity="center"/>
+
+
+
+
+
+</LinearLayout>
+
+-------------------------------------------------------------------------------------------------------------
+
+Java file:
+---------------------
+
+package com.example.myapplication7;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    Button button1;
+    TextView text1;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button1=findViewById(R.id.bton1);
+        text1=findViewById(R.id.txt1);
+        button1.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        String text = text1.getText().toString();
+        int s = Integer.parseInt(text)+1;
+        text1.setText(String.valueOf(s));
+    };
+}
+----------------------------------------------------------------
