@@ -1,0 +1,355 @@
+Main Activity xml:
+-------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Username"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/name"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Password"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:id="@+id/pass"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_margin="20dp"
+            android:id="@+id/register"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View"
+            android:layout_margin="20dp"
+            android:id="@+id/view"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+
+Main Activity JAva
+-----------------------------
+
+package com.example.recycleroom;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+    Button reg,view;
+    EditText name,password;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        reg = findViewById(R.id.register);
+        view = findViewById(R.id.view);
+        name = findViewById(R.id.name);
+        password = findViewById(R.id.pass);
+        reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        User user = new User(name.getText().toString(),password.getText().toString());
+                        UserRoomDatabase.getInstance(getApplicationContext()).userDao().insert(user);
+                    }
+                });
+                thread.start();
+            }
+        });
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
+
+
+Main Activity 2 Xmal
+------------------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity2">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv"/>
+
+</LinearLayout>
+
+MainActivity2 Java:
+------------------------------
+
+package com.example.recycleroom;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity2 extends AppCompatActivity {
+    RecyclerView rv;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        rv = findViewById(R.id.rv);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<User> users = UserRoomDatabase.getInstance(getApplicationContext()).userDao().getAllUsers();
+                rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                UserAdapter userAdapter = new UserAdapter(users);
+                rv.setAdapter(userAdapter);
+            }
+        });
+        thread.start();
+    }
+}
+
+userdata Xml:
+--------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv1"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv2"/>
+
+</LinearLayout>
+
+
+Myviewholder java
+-----------------------------------------
+
+package com.example.recycleroom;
+
+import android.view.View;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+public class MyViewHolder extends RecyclerView.ViewHolder {
+    TextView uname,upass;
+    public MyViewHolder(@NonNull View itemView) {
+        super(itemView);
+        uname = itemView.findViewById(R.id.tv1);
+        upass = itemView.findViewById(R.id.tv2);
+    }
+}
+
+
+UserAdapter java
+----------------------------
+
+package com.example.recycleroom;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserAdapter extends RecyclerView.Adapter<MyViewHolder> {
+    List<User> users;
+
+    public UserAdapter(List<User> users) {
+        this.users = users;
+    }
+
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_data,parent,false);
+        return new MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.uname.setText(users.get(position).getUsername());
+        holder.upass.setText(users.get(position).getPassword());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return users.size();
+    }
+}
+
+
+
+User java
+-----------------------------
+
+package com.example.recycleroom;
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
+public class User {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "uname")
+    private String username;
+
+    @ColumnInfo(name = "upass")
+    private String password;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+
+UserDao Interface
+------------------------------
+
+package com.example.recycleroom;
+
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
+
+import java.util.List;
+
+@Dao
+public interface UserDao {
+    @Insert
+    void insert(User user);
+
+    @Query("SELECT * FROM user")
+    List<User> getAllUsers();
+}
+
+
+UserRoomDatabase java
+--------------------------------------
+
+
+package com.example.recycleroom;
+
+import android.content.Context;
+
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
+@Database(entities = {User.class},version = 1)
+public abstract class UserRoomDatabase extends RoomDatabase {
+    public abstract UserDao userDao();
+    private static volatile UserRoomDatabase INSTANCE;
+    static UserRoomDatabase getInstance(Context context){
+        if(INSTANCE==null){
+            synchronized (UserRoomDatabase.class){
+                if(INSTANCE==null){
+                    INSTANCE= Room.databaseBuilder(context.getApplicationContext(),UserRoomDatabase.class,"User_Database").build();
+                }
+            }
+        }
+        return INSTANCE;
+    }
+}
+
+
+
